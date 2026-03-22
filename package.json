@@ -1,0 +1,16 @@
+{
+  "name": "api-pdf-wrapper",
+  "version": "1.0.0",
+  "description": "API Wrapper for Gotenberg PDF Generation",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0"
+  }
+}
