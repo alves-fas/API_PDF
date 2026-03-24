@@ -7,7 +7,7 @@ const gotenbergPassword = process.env.GOTENBERG_PASSWORD;
 
 /**
  * Converte uma string HTML em um Stream de PDF via Axios usando Gotenberg API.
- *
+ *  
  * @param {string} htmlString - Conteúdo HTML literal a ser convertido
  * @returns {Promise<any>} - Um buffer stream recebido pelo axios
  */
