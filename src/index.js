@@ -5,6 +5,20 @@ const convertRoutes = require('./routes/convert');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// === INÍCIO DA CAMADA DE SEGURANÇA ===
+app.use((req, res, next) => {
+  const apiKey = req.headers['x-api-key']; // Procura o header 'x-api-key'
+  const validKey = process.env.API_KEY;    // Pega a chave real do .env (Coolify)
+
+  // Se a chave não foi enviada ou estiver incorreta, bloqueia na hora
+  if (!apiKey || apiKey !== validKey) {
+    return res.status(401).json({ error: 'Acesso negado. API Key ausente ou inválida.' });
+  }
+  
+  next(); // Se a chave estiver certa, deixa a requisição passar!
+});
+// === FIM DA CAMADA DE SEGURANÇA ===
+
 // Middleware para processar texto ou HTML puro no body da requisição
 // Subimos o limite de tamanho para 50mb para aguentar HTMLs maiores
 app.use(express.text({ type: ['text/html', 'text/plain'], limit: '50mb' }));
